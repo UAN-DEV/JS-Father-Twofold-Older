@@ -1,5 +1,22 @@
 "use strict";
 
+/**
+ * Generates an array of strings describing a difference in years, with correct grammatical declension for the word "year" (год/года/лет) and appropriate temporal context (past/present/future).
+ *
+ * @param {number} inHowYears - The difference in years.
+ *                              A positive number indicates the past ("N years ago"),
+ *                              a negative number indicates the future ("in N years"),
+ *                              and zero indicates the present.
+ *
+ * @returns {[string, string]} An array containing two elements:
+ *   - `[0]`: A state verb ("was", "will be", or "now").
+ *   - `[1]`: A string containing the number, the correctly inflected form of the word "year," and any necessary prepositions (e.g., " in 5 years", " 1 year ago", or "").
+ *
+ * @example
+ * howWritedYear(5);   // ["был", " 5 лет назад"]
+ * howWritedYear(-1);  // ["будет", " через 1 год"]
+ * howWritedYear(0);   // ["сейчас", ""]
+ */
 export function howWritedYear(inHowYears) {
   const ABS_YEARS = Math.abs(inHowYears);
   const LAST_TWO_DIGITS = ABS_YEARS % 100;
